@@ -73,7 +73,7 @@ if (missingVarsCount > 0) {
      console.log("--- All checked essential variables are defined. ---");
 }
 
-// Log safe config in dev
+
 if (process.env.NODE_ENV === 'development') {
     const { JWT_SECRET, SMTP_PASSWORD, CLOUDINARY_API_SECRET, GEMINI_API_KEY, MONGO_URI, ...safeConfig } = module.exports;
     const maskedMongoUri = MONGO_URI ? MONGO_URI.replace(/([^:]+):([^@]+)@/, '$1:****@') : undefined;
