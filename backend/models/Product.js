@@ -74,17 +74,24 @@ const productSchema = new mongoose.Schema({
     ],
     category: {
         type: String,
-        required: [true, 'Please select a category for this product'],
+        required: [true, 'Please select a category'],
         trim: true,
         enum: {
-            // Ensure these values are consistent across frontend/backend
             values: [
                 'Tables', 'Chairs', 'Storage', 'Sets', 'Beds',
-                'Decor', 'Outdoor', 'Office', 'Other'
+                'Decor', 'Outdoor', 'Office', 'Other',
+                'Interior Design Project' // Added project category
             ],
-            message: 'Please select a valid category for the product: {VALUE}'
+            message: 'Please select a valid category: {VALUE}'
         },
-        index: true // Index category for filtering
+        index: true
+    },
+    subCategory: { // Optional field for project type
+        type: String,
+        trim: true,
+        // You could add an enum here if using fixed sub-categories
+        // enum: ['Residential', 'Commercial', 'Hospitality', 'Other'],
+        index: true // Index if you filter by it often
     },
     stock: {
         type: Number,
